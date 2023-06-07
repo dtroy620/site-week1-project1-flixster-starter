@@ -100,6 +100,12 @@ function generateCards(movieObject) {
     let image = document.createElement('img');
     image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path;
     document.body.insertBefore(image, averageContainer);
+
+    //Create Movie Name
+    let name = document.createElement('div');
+    name.classList.add('name');
+    name.innerText = movieObject.original_title;
+    document.body.insertBefore(name,averageContainer.nextSibling);
 }
 
 generateCards(firstMovie);

@@ -12,12 +12,7 @@ header {
     margin: 0 auto;
 }
 
-row {
+section {
     display: flex;
     justify-content: space-around;
-}
-
-#movies-grid {
-    background-color: lightgray;
-    color: black;
 }

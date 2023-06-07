@@ -1,4 +1,3 @@
-
 let fakeMoviesAPI = {
     "dates": {
         "maximum": "2023-06-05",
@@ -74,4 +73,33 @@ let fakeMoviesAPI = {
     "total_results": 1951
 }
 
-console.log(fakeMoviesAPI.results[0])
+let firstMovie = fakeMoviesAPI.results[0];
+
+function generateCards(movieObject) {
+    //Create Star
+    let star = document.createElement('span');
+    star.classList.add('star');
+    let starContent = document.createTextNode('⭐️');
+    star.appendChild(starContent);
+
+    //Create rating
+    let rating = document.createElement('span');
+    rating.classList.add('rating');
+    let ratingContent = document.createTextNode(movieObject.vote_average);
+    rating.appendChild(ratingContent);
+
+    //Create Average Container
+    let averageContainer = document.createElement('div');
+    averageContainer.classList.add('container');
+    averageContainer.appendChild(star);
+    averageContainer.appendChild(rating);
+
+    document.body.appendChild (averageContainer);
+
+    //Create Image
+    let image = document.createElement('img');
+    image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path;
+    document.body.insertBefore(image, averageContainer);
+}
+
+generateCards(firstMovie);

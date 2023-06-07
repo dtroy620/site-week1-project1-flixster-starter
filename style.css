@@ -1,1 +1,23 @@
+body {
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.611);
+    color: white;
+}
 
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+row {
+    display: flex;
+    justify-content: space-around;
+}
+
+#movies-grid {
+    background-color: lightgray;
+    color: black;
+}

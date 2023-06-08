@@ -1,7 +1,6 @@
 let movies = fetch("https://api.themoviedb.org/3/movie/550?api_key=c3d72f3d228608f13811c5ba9c39ba40")
 .then((response) => response.json())
 .then((data) =>{
-    console.log(data);
 });
 
 function getMovies() {
@@ -23,6 +22,7 @@ function getMovies() {
             }
         });
 }
+
 //Gets and Displays Movie Card Information
 function generateCards(movieObject) {
     //Create Star
@@ -64,30 +64,49 @@ function generateCards(movieObject) {
     movie.appendChild(image);
     movie.appendChild(averageContainer);
     movie.appendChild(name);
-    document.body.appendChild(movie);
-}
-
-getMovies();
-//Displays Pop-Up When Movie is Clicked
-const onClick = document.querySelectorAll('.movie-card')
-console.log(onClick);
-
-const popup = document.querySelector('.popup');
-const close = document.querySelector('.close-popup');
- 
-function displayPopUps () {
-   popup.classList.toggle("show-popup")
-}
-function windowClick(){
-    if (event.target === popup)
-    {
-        displayPopUps();
-    }
-}
-onClick.forEach((item) => {
-    item.addEventListener("click", displayPopUps);
     
-});
+    //document.body.appendChild(movie);
+    let movieGrid = document.querySelector('.movie-grid');
+    movieGrid.appendChild(movie);
+}
+getMovies();
+{
+//Displays Pop-Up When Movie is Clicked
+//const movieElement = document.getElementsByClassName('movie-card');
+// const getClassVar = document.getElementByClassName('movie-card');
+// const popup = document.querySelector('.popup');
+// const close = document.querySelector('.close-popup');
 
-close.addEventListener("click",displayPopUps);
-window.addEventListener("click",windowClick);
+// for (let i = 0; i < movieElement.results.length; i++)
+// {
+//     document.getElementById(movieElement.results.id[i]).addEventListener(
+//         'click', function() {
+//             displayPopUps
+//         }
+//     ) 
+// }
+
+
+// function displayPopUps () {
+//    popup.classList.toggle("show-popup")
+// }
+// function windowClick(){
+//     if (event.target === popup)
+//     {
+//         displayPopUps();
+//     }
+// }
+
+// // console.log(queryVar);
+// // console.log(getClassVar);
+
+// // queryVar.forEach(function(item) {
+// //     item.addEventListener("click", displayPopUps);
+// // });
+
+
+// close.addEventListener("click",displayPopUps);
+// window.addEventListener("click",windowClick);
+}
+
+//Load More Button

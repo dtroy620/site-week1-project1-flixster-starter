@@ -13,6 +13,10 @@ header {
 }
 
 section {
-    display: flex;
-    justify-content: space-around;
+    display: inline-block;
+    margin: 20px;
+}
+
+.image {
+    border-radius: 5%;
 }

@@ -98,14 +98,26 @@ function generateCards(movieObject) {
 
     //Create Image
     let image = document.createElement('img');
+    image.classList.add('image');
     image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path;
-    document.body.insertBefore(image, averageContainer);
+    //document.body.insertBefore(img, averageContainer);
 
     //Create Movie Name
     let name = document.createElement('div');
     name.classList.add('name');
     name.innerText = movieObject.original_title;
-    document.body.insertBefore(name,averageContainer.nextSibling);
+    //document.body.insertBefore(name, averageContainer.nextSibling);
+
+    //Places card into section
+    let movie = document.createElement('section');
+    movie.classList.add('movie');
+    movie.appendChild(image);
+    movie.appendChild(averageContainer);
+    movie.appendChild(name);
+    document.body.appendChild(movie);
 }
 
-generateCards(firstMovie);
+for (let i = 0; i < fakeMoviesAPI.results.length; i++)
+{
+    generateCards(fakeMoviesAPI.results[i]);
+}

@@ -73,8 +73,7 @@ let fakeMoviesAPI = {
     "total_results": 1951
 }
 
-let firstMovie = fakeMoviesAPI.results[0];
-
+//Gets and Displays Movie Card Information
 function generateCards(movieObject) {
     //Create Star
     let star = document.createElement('span');
@@ -90,7 +89,7 @@ function generateCards(movieObject) {
 
     //Create Average Container
     let averageContainer = document.createElement('div');
-    averageContainer.classList.add('container');
+    averageContainer.classList.add('movie-votes');
     averageContainer.appendChild(star);
     averageContainer.appendChild(rating);
 
@@ -98,19 +97,19 @@ function generateCards(movieObject) {
 
     //Create Image
     let image = document.createElement('img');
-    image.classList.add('image');
+    image.classList.add('movie-poster');
     image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path;
     //document.body.insertBefore(img, averageContainer);
 
     //Create Movie Name
     let name = document.createElement('div');
-    name.classList.add('name');
+    name.classList.add('movie-title');
     name.innerText = movieObject.original_title;
     //document.body.insertBefore(name, averageContainer.nextSibling);
 
     //Places card into section
     let movie = document.createElement('section');
-    movie.classList.add('movie');
+    movie.classList.add('movie-card');
     movie.appendChild(image);
     movie.appendChild(averageContainer);
     movie.appendChild(name);
@@ -121,3 +120,27 @@ for (let i = 0; i < fakeMoviesAPI.results.length; i++)
 {
     generateCards(fakeMoviesAPI.results[i]);
 }
+
+//Displays Pop-Up When Movie is Clicked
+const onClick = document.querySelectorAll('.movie-card')
+console.log(onClick);
+
+const popup = document.querySelector('.popup');
+const close = document.querySelector('.close-popup');
+ 
+function displayPopUps () {
+   popup.classList.toggle("show-popup")
+   console.log(onClick);
+}
+function windowClick(){
+    if (event.target === popup)
+    {
+        displayPopUps();
+    }
+}
+onClick.forEach((item) => {
+    item.addEventListener("click", displayPopUps);
+});
+
+close.addEventListener("click",displayPopUps);
+window.addEventListener("click",windowClick);

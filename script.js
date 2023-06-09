@@ -77,6 +77,7 @@ let clearSearchButton = document.getElementById('clear-search-btn')
 
 clearSearchButton.addEventListener('click', () => {
     event.preventDefault();
+    clearSearchButton.style.visibility = "hidden";
     searchInput.value = "";
     pageNumber = 1;
     grid.innerHTML = ""
@@ -148,44 +149,5 @@ function lightModeFunc() {
 
 lightModeButton.addEventListener('click', lightModeFunc);
 
-{
-// Displays Pop-Up When Movie is Clicked
-const movieElement = document.getElementsByClassName('movie-card');
-const popup = document.querySelector('.popup');
-const close = document.querySelector('.close-popup');
-
-console.log(movieElement);
-
-// for (let i = 0; i < movieElement.results.length; i++)
-// {
-//     document.getElementById(movieElement.results.id[i]).addEventListener(
-//         'click', function() {
-//             displayPopUps
-//         }
-//     ) 
-// }
-
-
-// function displayPopUps () {
-//    popup.classList.toggle("show-popup")
-// }
-// function windowClick(){
-//     if (event.target === popup)
-//     {
-//         displayPopUps();
-//     }
-// }
-
-// // console.log(queryVar);
-// // console.log(getClassVar);
-
-// // queryVar.forEach(function(item) {
-// //     item.addEventListener("click", displayPopUps);
-// // });
-
-
-// close.addEventListener("click",displayPopUps);
-// window.addEventListener("click",windowClick);
-}
 
 

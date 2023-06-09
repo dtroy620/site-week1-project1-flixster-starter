@@ -1,12 +1,10 @@
-📝 **NOTE** Use this template to initialize the contents of a README.md file for your application. As you work on your assignment over the course of the week, update the required or stretch features lists to indicate which features you have completed by changing `[ ]` to `[x]`. (🚫 Remove this paragraph before submitting your assignment.)
-
 ## Week 1 Assignment: Flixster
 
 Submitted by: David Troy
 
-Estimated time spent: **#** hours spent in total
+Estimated time spent: 7 hours spent in total
 
-Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
+Deployed Application (optional): [Flixster Deployed Site](https://dtroy620.github.io/site-week1-project1-flixster-starter/)
 
 ### Application Features
 
@@ -34,31 +32,32 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
 
 #### Stretch Features
 
-- [ ] Deploy website using GitHub Pages.
+- [x] Deploy website using GitHub Pages.
 - [ ] Allow user to view more details about a movie within a popup.
-- [ ] Improve the user experience through CSS & animation.
+- [x] Improve the user experience through CSS & animation.
 - [ ] Allow movie video trailers to be played using [embedded YouTube](https://support.google.com/youtube/answer/171780?hl=en)
-- [ ] Implement anything else that you can get done to improve the app functionality!
+- [x] Implement anything else that you can get done to improve the app functionality!
 
 ### Walkthrough Video
 
-`TODO://` Add the embedded URL code to your animated app walkthrough below, `ADD_EMBEDDED_CODE_HERE`. Make sure the video or gif actually renders and animates when viewing this README. (🚫 Remove this paragraph after adding walkthrough video)
-
-`ADD_EMBEDDED_CODE_HERE`
+<a href="https://www.loom.com/share/4d59d94dafdb412a82124fe0fb2fe25e">
+   <p>Flixster</p>
+   <img style="max-width:300px;" src="https://cdn.loom.com/sessions/thumbnails/4d59d94dafdb412a82124fe0fb2fe25e-with-play.gif">
+</a>
 
 ### Reflection
 
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Add your response here
+The topics discussed in the labds did prepare me to complete the assignment. The topics such as adding APIs, using querySelector, getElementById, addEventListener were all used in this project. Learning these topics helped me greatly for completing this project. THere were not any features in the weekly assignments that did not make me feel unprepared to complete.
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
   
-Add your response here
+If I had more time, I would add more functionality and accessibility features to the website, like adding pop-ups for a more detailed explanation on the movies. 
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-Add your response here
+The HTML coding of the website went well. Though, there were a few problems that arose as I coded the JavaScript and the CSS. Figuring out how to load more movies when the load button was pressed, having the search feature show movies that were related to the search filter were all things that had me think and seek for help. When heading for help from peers, I realized many of the ways I was going about solving these problems were very robust and headed in a very roundabout solution. So seeing and noticing how they approached the problems were very helpful and I would like to try next time.
 
 ### Open-source libraries used
 
@@ -67,3 +66,5 @@ Add your response here
 ### Shout out
 
 Give a shout out to somebody from your cohort that especially helped you during your project. This can be a fellow peer, instructor, TA, mentor, etc.
+
+I shout out all of my instructors, my peers Khalid, Maria, Cesar, and many more.

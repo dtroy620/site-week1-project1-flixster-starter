@@ -1,7 +1,5 @@
-let movies = fetch("https://api.themoviedb.org/3/movie/550?api_key=c3d72f3d228608f13811c5ba9c39ba40")
-.then((response) => response.json())
-.then((data) =>{
-});
+let initialMovies = 0;
+let loadMovies = 0;
 
 function getMovies() {
     const options = {
@@ -16,10 +14,12 @@ function getMovies() {
         .then(response => response.json())
         .then((data) => {
             // your code here
-            for (let i = 0; i < data.results.length; i++)
+            for (initialMovies; initialMovies < data.results.length + loadMovies; initialMovies++)
             {
-                generateCards(data.results[i]);
+                generateCards(data.results[initialMovies]);
             }
+            loadMovies += 20;
+            console.log(data.results.length);
         });
 }
 
@@ -66,7 +66,7 @@ function generateCards(movieObject) {
     movie.appendChild(name);
     
     //document.body.appendChild(movie);
-    let movieGrid = document.querySelector('.movie-grid');
+    let movieGrid = document.querySelector('#movie-grid');
     movieGrid.appendChild(movie);
 }
 getMovies();
@@ -110,3 +110,6 @@ getMovies();
 }
 
 //Load More Button
+const loadMoreButton = document.querySelector('#load-more');
+
+loadMoreButton.addEventListener('click', getMovies);

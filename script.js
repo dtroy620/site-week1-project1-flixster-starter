@@ -17,12 +17,6 @@ function getMovies() {
                 generateCards(data.results[i]);
             }
             pageNumber++;
-            // for (initialMovies; initialMovies < data.results.length + loadMovies; initialMovies++)
-            // {
-            //     generateCards(data.results[initialMovies]);
-            // }
-            // loadMovies += 20;
-            // console.log(data.results.length);
         });
 }
 
@@ -112,44 +106,51 @@ getMovies();
 // window.addEventListener("click",windowClick);
 }
 
-//Load More Button
-const loadMoreButton = document.querySelector('#load-more-movies-btn');
-loadMoreButton.addEventListener('click', getMovies);
-
-// //Search Bar Functionality
+//Search Bar Functionality
 const searchInput = document.getElementById('search-input')
-
 const grid = document.getElementById('movie-grid')
-
-function getSearch(key) {
-    
-    
+function searchMovieAPI() {
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Q3MmYzZDIyODYwOGYxMzgxMWM1YmE5YzM5YmE0MCIsInN1YiI6IjY0ODIwMmVlYmYzMWYyMDEwMDMzYjEwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.str8-__MX1TXzcgRmP6o4PXUViiAzrohUJT0e1iUjSk'
+        }
+        };
+        
+        fetch('https://api.themoviedb.org/3/search/movie?query='+searchInput.value+'&include_adult=false&language=en-US&page='+pageNumber, options)
+        .then(response => response.json())
+        .then((data) => {
+            // your code here
+            for (let i = 0; i < data.results.length; i++)
+            {
+                generateCards(data.results[i]);
+            }   
+        })
 }
-
 searchInput.addEventListener('keyup', () => {
-    grid.innerHTML = "";
-    console.log(searchInput.value);
+    grid.innerHTML = ""
     if (searchInput.value.length >= 1){
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Q3MmYzZDIyODYwOGYxMzgxMWM1YmE5YzM5YmE0MCIsInN1YiI6IjY0ODIwMmVlYmYzMWYyMDEwMDMzYjEwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.str8-__MX1TXzcgRmP6o4PXUViiAzrohUJT0e1iUjSk'
-            }
-            };
-            
-            fetch('https://api.themoviedb.org/3/search/movie?query='+searchInput.value.toString()+'&include_adult=false&language=en-US&page='+pageNumber.toString(), options)
-            .then(response => response.json())
-            .then((data) => {
-                // your code here
-                for (let i = 0; i < data.results.length; i++)
-                {
-                    generateCards(data.results[i]);
-                }   
-            })
+        searchMovieAPI();
     }
     else {
         pageNumber = 1;
         getMovies();
     }
 });
+
+//Load More Button
+const loadMoreButton = document.querySelector('#load-more-movies-btn');
+loadMoreButton.addEventListener('click', () => {
+    if (searchInput.value === "")
+    {
+        getMovies();
+    }
+    else
+    {
+        pageNumber++;
+        searchMovieAPI();
+    }
+
+});
+

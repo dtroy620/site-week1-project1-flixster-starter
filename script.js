@@ -1,3 +1,4 @@
+//Global variable Declaration
 let pageNumber = 1;
 
 function getMovies() {
@@ -9,7 +10,7 @@ function getMovies() {
         }
         };
         
-        fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+pageNumber.toString(), options)
+        fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+pageNumber, options)
         .then(response => response.json())
         .then((data) => {
             for (let i = 0; i < data.results.length; i++)
@@ -45,6 +46,7 @@ function generateCards(movieObject) {
     //Create Image
     let image = document.createElement('img');
     image.classList.add('movie-poster');
+    image.setAttribute('alt',"Movie Poster for " + movieObject.original_title);
     image.src = "https://image.tmdb.org/t/p/w342" + movieObject.poster_path;
     //document.body.insertBefore(img, averageContainer);
 
@@ -67,12 +69,90 @@ function generateCards(movieObject) {
     movieGrid.appendChild(movie);
 }
 getMovies();
+
+//Search Bar Functionality
+let searchInput = document.getElementById('search-input')
+const grid = document.getElementById('movie-grid')
+let clearSearchButton = document.getElementById('clear-search-btn')
+
+clearSearchButton.addEventListener('click', () => {
+    event.preventDefault();
+    searchInput.value = "";
+    pageNumber = 1;
+    grid.innerHTML = ""
+    getMovies();
+})
+
+function searchMovieAPI() {
+    const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Q3MmYzZDIyODYwOGYxMzgxMWM1YmE5YzM5YmE0MCIsInN1YiI6IjY0ODIwMmVlYmYzMWYyMDEwMDMzYjEwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.str8-__MX1TXzcgRmP6o4PXUViiAzrohUJT0e1iUjSk'
+        }
+        };
+        
+        fetch('https://api.themoviedb.org/3/search/movie?query='+searchInput.value+'&include_adult=false&language=en-US&page='+pageNumber, options)
+        .then(response => response.json())
+        .then((data) => {
+            for (let i = 0; i < data.results.length; i++)
+            {
+                generateCards(data.results[i]);
+            }   
+        })
+}
+
+searchInput.addEventListener('keyup', () => {
+    grid.innerHTML = ""
+    if (searchInput.value.length >= 1){
+        searchMovieAPI();
+    }
+    else {
+        pageNumber = 1;
+        getMovies();
+    }
+});
+
+//Load More Button
+const loadMoreButton = document.querySelector('#load-more-movies-btn');
+loadMoreButton.addEventListener('click', () => {
+    if (searchInput.value === "")
+    {
+        getMovies();
+    }
+    else
+    {
+        pageNumber++;
+        searchMovieAPI();
+    }
+
+});
+
+//Dark Mode Button
+const lightModeButton = document.getElementById('light-mode-btn');
+function lightModeFunc() {
+    document.body.classList.toggle('dark-mode');
+
+    if (lightModeButton.innerText === "Light Mode")
+    {
+        lightModeButton.innerText = "Dark Mode";
+    }
+    else if (lightModeButton.innerText === "Dark Mode")
+    {
+        lightModeButton.innerText = "Light Mode"; 
+    }
+    
+}
+
+lightModeButton.addEventListener('click', lightModeFunc);
+
 {
-//Displays Pop-Up When Movie is Clicked
-//const movieElement = document.getElementsByClassName('movie-card');
-// const getClassVar = document.getElementByClassName('movie-card');
-// const popup = document.querySelector('.popup');
-// const close = document.querySelector('.close-popup');
+// Displays Pop-Up When Movie is Clicked
+const movieElement = document.getElementsByClassName('movie-card');
+const popup = document.querySelector('.popup');
+const close = document.querySelector('.close-popup');
+
+console.log(movieElement);
 
 // for (let i = 0; i < movieElement.results.length; i++)
 // {
@@ -106,51 +186,4 @@ getMovies();
 // window.addEventListener("click",windowClick);
 }
 
-//Search Bar Functionality
-const searchInput = document.getElementById('search-input')
-const grid = document.getElementById('movie-grid')
-function searchMovieAPI() {
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Q3MmYzZDIyODYwOGYxMzgxMWM1YmE5YzM5YmE0MCIsInN1YiI6IjY0ODIwMmVlYmYzMWYyMDEwMDMzYjEwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.str8-__MX1TXzcgRmP6o4PXUViiAzrohUJT0e1iUjSk'
-        }
-        };
-        
-        fetch('https://api.themoviedb.org/3/search/movie?query='+searchInput.value+'&include_adult=false&language=en-US&page='+pageNumber, options)
-        .then(response => response.json())
-        .then((data) => {
-            // your code here
-            for (let i = 0; i < data.results.length; i++)
-            {
-                generateCards(data.results[i]);
-            }   
-        })
-}
-searchInput.addEventListener('keyup', () => {
-    grid.innerHTML = ""
-    if (searchInput.value.length >= 1){
-        searchMovieAPI();
-    }
-    else {
-        pageNumber = 1;
-        getMovies();
-    }
-});
-
-//Load More Button
-const loadMoreButton = document.querySelector('#load-more-movies-btn');
-loadMoreButton.addEventListener('click', () => {
-    if (searchInput.value === "")
-    {
-        getMovies();
-    }
-    else
-    {
-        pageNumber++;
-        searchMovieAPI();
-    }
-
-});
 

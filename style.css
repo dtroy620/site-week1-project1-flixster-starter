@@ -33,9 +33,6 @@ header {
     border-radius: 10%;
 }
 
-#movie-grid {
-    display: flex;
-}
 .movie-card {
     display: inline-block;
     margin: 20px;

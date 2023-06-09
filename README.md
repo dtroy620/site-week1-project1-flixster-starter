@@ -19,7 +19,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
   - Title - the element should have a class of `movie-title`
   - Image - the `img` element should have a class of `movie-poster`
   - Votes - the element should have a class of `movie-votes`
-- [ ] User can load more current movies by clicking a button at the bottom of the list
+- [x] User can load more current movies by clicking a button at the bottom of the list
   - The button should have an id of `load-more-movies-btn`.
   - When clicked, the page should not refresh.
   - New movies should simply be added to the bottom
@@ -30,7 +30,7 @@ Deployed Application (optional): [Flixster Deployed Site](ADD_LINK_HERE)
   - The results from the search should be displayed on the page
   - There should be a close icon with an id of `close-search-btn` that exits the search, clears results, and shows the current movies displayed previously
 - [ ] Website accounts for basic HTML/CSS accessibility features
-- [ ] Website should be responsive
+- [x] Website should be responsive
 
 #### Stretch Features
 

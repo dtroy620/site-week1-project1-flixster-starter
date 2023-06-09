@@ -6,7 +6,6 @@ body {
 
 header {
     display: flex;
-    align-items: center;
     justify-content: center;
     font-size: 30px;
     margin: 0 auto;
@@ -15,28 +14,47 @@ header {
 #search-form {
     display: flex;
     justify-content: center;
-    font-size: 30px;
     border-radius: 10%;
 }
 
-#search-box {
+#search-input {
     width: 50%;
+    font-size: 30px;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 5px;
+}
+
+#search-button {
+    font-size: 15px;
+    color: white;
+    background-color: black;
+    padding: 15px;
+    border-radius: 10%;
+}
+
+#movie-grid {
+    display: flex;
 }
 .movie-card {
     display: inline-block;
     margin: 20px;
     text-align: center;
     flex-wrap: nowrap;
+    width: 342px;
 }
 .movie-card:hover {
     border: solid;
     border-radius: 5%;
+    width: 342px;
 }
 
 .movie-poster {
     border-radius: 5%;
+    width: 342px;
+    height: 513px;
 }
-
+/* {
 .popup {
     position: fixed;
     left: 0;
@@ -83,12 +101,14 @@ header {
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
+} */
 
-#load-more {
+#load-more-movies-btn {
     display: flex;
     align-items: center;
     color: white;
     background-color: black;
     margin: auto;
     font-size: 30px;
+    border-radius: 5px;
 }

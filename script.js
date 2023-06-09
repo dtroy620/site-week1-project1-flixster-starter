@@ -1,5 +1,4 @@
-let initialMovies = 0;
-let loadMovies = 0;
+let pageNumber = 1;
 
 function getMovies() {
     const options = {
@@ -10,16 +9,20 @@ function getMovies() {
         }
         };
         
-        fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
+        fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page='+pageNumber.toString(), options)
         .then(response => response.json())
         .then((data) => {
-            // your code here
-            for (initialMovies; initialMovies < data.results.length + loadMovies; initialMovies++)
+            for (let i = 0; i < data.results.length; i++)
             {
-                generateCards(data.results[initialMovies]);
+                generateCards(data.results[i]);
             }
-            loadMovies += 20;
-            console.log(data.results.length);
+            pageNumber++;
+            // for (initialMovies; initialMovies < data.results.length + loadMovies; initialMovies++)
+            // {
+            //     generateCards(data.results[initialMovies]);
+            // }
+            // loadMovies += 20;
+            // console.log(data.results.length);
         });
 }
 
@@ -110,6 +113,43 @@ getMovies();
 }
 
 //Load More Button
-const loadMoreButton = document.querySelector('#load-more');
-
+const loadMoreButton = document.querySelector('#load-more-movies-btn');
 loadMoreButton.addEventListener('click', getMovies);
+
+// //Search Bar Functionality
+const searchInput = document.getElementById('search-input')
+
+const grid = document.getElementById('movie-grid')
+
+function getSearch(key) {
+    
+    
+}
+
+searchInput.addEventListener('keyup', () => {
+    grid.innerHTML = "";
+    console.log(searchInput.value);
+    if (searchInput.value.length >= 1){
+        const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjM2Q3MmYzZDIyODYwOGYxMzgxMWM1YmE5YzM5YmE0MCIsInN1YiI6IjY0ODIwMmVlYmYzMWYyMDEwMDMzYjEwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.str8-__MX1TXzcgRmP6o4PXUViiAzrohUJT0e1iUjSk'
+            }
+            };
+            
+            fetch('https://api.themoviedb.org/3/search/movie?query='+searchInput.value.toString()+'&include_adult=false&language=en-US&page='+pageNumber.toString(), options)
+            .then(response => response.json())
+            .then((data) => {
+                // your code here
+                for (let i = 0; i < data.results.length; i++)
+                {
+                    generateCards(data.results[i]);
+                }   
+            })
+    }
+    else {
+        pageNumber = 1;
+        getMovies();
+    }
+});

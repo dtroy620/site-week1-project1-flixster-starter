@@ -105,9 +105,11 @@ function searchMovieAPI() {
 searchInput.addEventListener('keyup', () => {
     grid.innerHTML = ""
     if (searchInput.value.length >= 1){
+        clearSearchButton.style.visibility = "visible";
         searchMovieAPI();
     }
     else {
+        clearSearchButton.style.visibility = "hidden";
         pageNumber = 1;
         getMovies();
     }

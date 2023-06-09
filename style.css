@@ -47,6 +47,7 @@ header {
     background-color: black;
     padding: 15px;
     border-radius: 10%;
+    visibility: hidden;
 }
 
 .movie-card {

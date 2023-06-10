@@ -2,7 +2,7 @@
 
 Submitted by: David Troy
 
-Estimated time spent: 7 hours spent in total
+Estimated time spent: 10 hours spent in total
 
 Deployed Application (optional): [Flixster Deployed Site](https://dtroy620.github.io/site-week1-project1-flixster-starter/)
 

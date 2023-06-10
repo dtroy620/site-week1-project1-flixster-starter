@@ -24,13 +24,44 @@ header {
 .dark-mode{
     background-color: #cecccc;
     color: black;
-
 }
 #search-form {
     display: flex;
     justify-content: center;
     border-radius: 10%;
     font-size: 20px;
+}
+.dialog-background {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: white;
+    opacity: 10%;
+
+}
+.dialog{
+    position: fixed;
+    background-color: #1B2021;
+    color: white;
+    max-width: 50%;
+    text-align:center;
+}
+
+#close-dialog-btn {
+    float: right;
+    display: flex;
+    visibility: hidden;
+    font-size: 30px;
+    position: fixed;
+    z-index: 1;
+    margin-left: 100px;
+    background-color: #1B2021;
+    color: white;
+    border-color: white;
 }
 
 #search-input {
@@ -68,54 +99,6 @@ header {
     width: 342px;
     height: 513px;
 }
-/* {
-.popup {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-}
-
-.popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 1rem 1.5rem;
-    width: 24rem;
-    border-radius: 0.5rem;
-    color: black;
-}
-
-.close-popup {
-    float: right;
-    width: 1.5rem;
-    line-height: 1.5rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 0.25rem;
-    background-color: lightgray;
-    color: black;
-}
-
-.close-popup:hover {
-    border-color: black;
-}
-
-.show-popup {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-}
-} */
 
 #load-more-movies-btn {
     display: flex;

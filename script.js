@@ -1,6 +1,14 @@
 //Global variable Declaration
 let pageNumber = 1;
+const dialog = document.querySelector('.dialog');
+const closeDialogBtn = document.querySelector('#close-dialog-btn');
+const dialogBackground = document.querySelector('.dialog-background');
 
+dialogBackground.addEventListener('click', () => {
+    dialog.close();
+    dialogBackground.style.display = "none";
+    closeDialogBtn.style.visibility = "hidden";
+})
 function getMovies() {
     const options = {
         method: 'GET',
@@ -63,12 +71,26 @@ function generateCards(movieObject) {
     movie.appendChild(image);
     movie.appendChild(averageContainer);
     movie.appendChild(name);
-    
+
+
+    movie.addEventListener('click', () => {
+        dialog.innerText = movieObject.original_title + "\n" + movieObject.overview;
+        dialog.show();
+        closeDialogBtn.style.visibility = "visible";
+        dialogBackground.style.display = "block";
+        
+    })
     //document.body.appendChild(movie);
     let movieGrid = document.querySelector('#movie-grid');
     movieGrid.appendChild(movie);
 }
 getMovies();
+
+closeDialogBtn.addEventListener('click', () => {
+    dialog.close();
+    closeDialogBtn.style.visibility ="hidden";
+})
+
 
 //Search Bar Functionality
 let searchInput = document.getElementById('search-input')
@@ -132,22 +154,20 @@ loadMoreButton.addEventListener('click', () => {
 });
 
 //Dark Mode Button
-const lightModeButton = document.getElementById('light-mode-btn');
+const lightModeBtn = document.getElementById('light-mode-btn');
+
 function lightModeFunc() {
     document.body.classList.toggle('dark-mode');
-
-    if (lightModeButton.innerText === "Light Mode")
+    if (lightModeBtn.innerText === "Light Mode")
     {
-        lightModeButton.innerText = "Dark Mode";
+        lightModeBtn.innerText = "Dark Mode";
     }
-    else if (lightModeButton.innerText === "Dark Mode")
+    else if (lightModeBtn.innerText === "Dark Mode")
     {
-        lightModeButton.innerText = "Light Mode"; 
+        lightModeBtn.innerText = "Light Mode"; 
     }
     
 }
 
-lightModeButton.addEventListener('click', lightModeFunc);
-
-
+lightModeBtn.addEventListener('click', lightModeFunc);
 
